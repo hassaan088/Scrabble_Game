@@ -1,0 +1,59 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PhoneApp1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="SCRABBLE Game" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FFCCB1F3" FontSize="36" FontFamily="Bernard MT Condensed" TextDecorations="Underline"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Background="CadetBlue"  Margin="14,65,10,33" RenderTransformOrigin="0.491,0.442" Grid.RowSpan="2">
+            <Button Content="Sumbit Word" VerticalContentAlignment="Center"  HorizontalAlignment="Left"  Margin="216,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.338,0.358" Width="220" Click="Button_Click_1" Height="99" FontFamily="Aharoni" FontWeight="Bold" Foreground="{StaticResource PhoneAccentBrush}">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF290C29"/>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="tb1" Visibility="Collapsed" HorizontalAlignment="Left" Height="94" Margin="24,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
+            <Button x:Name="bt1"  Content="" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="bt2"  Content="" HorizontalAlignment="Left" Margin="73,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt3"  Content="" HorizontalAlignment="Left" Margin="147,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt4"  HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="24,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt4_Click"/>
+            <Button x:Name="bt5" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="89,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt5_Click"/>
+            <Button x:Name="bt6" HorizontalContentAlignment="Left" Margin="152,214,214,0" VerticalAlignment="Top" Height="80" Width="90" Click="bt6_Click"/>
+            <Button x:Name="bt7"  Content="" HorizontalAlignment="Left" Margin="219,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt8"  Content="" HorizontalAlignment="Left" Margin="292,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt9"  Content="" HorizontalAlignment="Left" Margin="365,2,-9,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="bt10" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="217,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt10_Click"/>
+            <Button x:Name="bt12" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="346,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt12_Click"/>
+            <Button x:Name="bt11" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="281,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt11_Click"/>
+            <Button Content="Refresh" HorizontalAlignment="Left" Margin="24,142,0,0" VerticalAlignment="Top" Width="155" Click="Button_Click_2" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063"/>
+            <TextBlock Name="tblock1" TextAlignment="Right" HorizontalAlignment="Left" Margin="34,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
+            <TextBlock Name="tblock2" HorizontalAlignment="Left" TextAlignment="Right" Margin="97,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
+            <TextBlock Name="tblock3" HorizontalAlignment="Left" Margin="161,249,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
+            <TextBlock  Name="tblock4" HorizontalAlignment="Left" Margin="226,249,0,0" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Top"  Width="55"/>
+            <TextBlock Name="tblock5" HorizontalAlignment="Left" Margin="290,249,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="55"/>
+            <TextBlock Name="tblock6" HorizontalAlignment="Left" Margin="354,249,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="55"/>
+            <TextBlock Name="socre" HorizontalAlignment="Left" Margin="34,568,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>
