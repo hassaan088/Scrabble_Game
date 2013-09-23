@@ -26,33 +26,76 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Background="CadetBlue"  Margin="14,65,10,33" RenderTransformOrigin="0.491,0.442" Grid.RowSpan="2">
-            <Button Content="Sumbit Word" VerticalContentAlignment="Center"  HorizontalAlignment="Left"  Margin="216,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.338,0.358" Width="220" Click="Button_Click_1" Height="99" FontFamily="Aharoni" FontWeight="Bold" Foreground="{StaticResource PhoneAccentBrush}">
+        <Grid x:Name="ContentPanel" Background="CadetBlue"  Margin="14,60,10,15" RenderTransformOrigin="0.491,0.442" Grid.RowSpan="2">
+            <Button Content="Sumbit Word" VerticalContentAlignment="Center"  HorizontalAlignment="Left"  Margin="237,610,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.338,0.358" Width="219" Click="Button_Click_1" Height="83" FontFamily="Aharoni" FontWeight="Bold" Foreground="{StaticResource PhoneAccentBrush}">
                 <Button.Background>
                     <SolidColorBrush Color="#FF290C29"/>
                 </Button.Background>
             </Button>
             <TextBox x:Name="tb1" Visibility="Collapsed" HorizontalAlignment="Left" Height="94" Margin="24,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
-            <Button x:Name="bt1"  Content="" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
-            <Button x:Name="bt2"  Content="" HorizontalAlignment="Left" Margin="73,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
-            <Button x:Name="bt3"  Content="" HorizontalAlignment="Left" Margin="147,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
-            <Button x:Name="bt4"  HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="24,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt4_Click"/>
-            <Button x:Name="bt5" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="89,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt5_Click"/>
-            <Button x:Name="bt6" HorizontalContentAlignment="Left" Margin="152,214,214,0" VerticalAlignment="Top" Height="80" Width="90" Click="bt6_Click"/>
-            <Button x:Name="bt7"  Content="" HorizontalAlignment="Left" Margin="219,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
-            <Button x:Name="bt8"  Content="" HorizontalAlignment="Left" Margin="292,2,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
-            <Button x:Name="bt9"  Content="" HorizontalAlignment="Left" Margin="365,2,-9,0" VerticalAlignment="Top" Height="74" Width="100"/>
-            <Button x:Name="bt10" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="217,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt10_Click"/>
-            <Button x:Name="bt12" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="346,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt12_Click"/>
-            <Button x:Name="bt11" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="281,214,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt11_Click"/>
-            <Button Content="Refresh" HorizontalAlignment="Left" Margin="24,142,0,0" VerticalAlignment="Top" Width="155" Click="Button_Click_2" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063"/>
-            <TextBlock Name="tblock1" TextAlignment="Right" HorizontalAlignment="Left" Margin="34,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
-            <TextBlock Name="tblock2" HorizontalAlignment="Left" TextAlignment="Right" Margin="97,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
-            <TextBlock Name="tblock3" HorizontalAlignment="Left" Margin="161,249,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
-            <TextBlock  Name="tblock4" HorizontalAlignment="Left" Margin="226,249,0,0" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Top"  Width="55"/>
-            <TextBlock Name="tblock5" HorizontalAlignment="Left" Margin="290,249,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="55"/>
-            <TextBlock Name="tblock6" HorizontalAlignment="Left" Margin="354,249,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="55"/>
-            <TextBlock Name="socre" HorizontalAlignment="Left" Margin="34,568,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <Button x:Name="bt1"  Content="" HorizontalAlignment="Left" Margin="-9,347,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue" Click="bt1_Click"/>
+            <Button x:Name="bt2"  Content="" HorizontalAlignment="Left" Margin="64,347,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt3"  Content="" HorizontalAlignment="Left" Margin="138,347,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt4"  HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="24,426,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt4_Click"/>
+            <Button x:Name="bt5" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="89,426,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt5_Click"/>
+            <Button x:Name="bt6" HorizontalContentAlignment="Left" Margin="152,426,214,0" VerticalAlignment="Top" Height="80" Width="90" Click="bt6_Click"/>
+            <Button x:Name="bt7"  Content="" HorizontalAlignment="Left" Margin="210,347,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt8"  Content="" HorizontalAlignment="Left" Margin="283,347,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="bt9"  Content="" HorizontalAlignment="Left" Margin="356,347,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="bt10" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="217,426,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt10_Click"/>
+            <Button x:Name="bt12" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="346,426,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt12_Click"/>
+            <Button x:Name="bt11" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="281,426,0,0" VerticalAlignment="Top" Width="90" Height="80" Click="bt11_Click"/>
+            <Button Content="Mix Up" HorizontalAlignment="Left" Margin="281,488,0,0" VerticalAlignment="Top" Width="155" Click="Button_Click_2" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063"/>
+            <TextBlock Name="tblock1" TextAlignment="Right" HorizontalAlignment="Left" Margin="64,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+            <TextBlock Name="tblock2" HorizontalAlignment="Left" TextAlignment="Right" Margin="131,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+            <TextBlock Name="tblock3" HorizontalAlignment="Left" Margin="193,467,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+            <TextBlock  Name="tblock4" HorizontalAlignment="Left" Margin="256,467,0,0" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Top"  Width="30"/>
+            <TextBlock Name="tblock5" HorizontalAlignment="Left" Margin="324,467,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30"/>
+            <TextBlock Name="tblock6" HorizontalAlignment="Left" Margin="386,467,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30"/>
+            <Button x:Name="t1"  Content="" HorizontalAlignment="Left" Margin="-9,12,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t2"  Content="" HorizontalAlignment="Left" Margin="64,12,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t3"  Content="" HorizontalAlignment="Left" Margin="138,12,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t4"  Content="" HorizontalAlignment="Left" Margin="210,12,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t5"  Content="" HorizontalAlignment="Left" Margin="283,12,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t6"  Content="" HorizontalAlignment="Left" Margin="356,12,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="t7"  Content="" HorizontalAlignment="Left" Margin="-9,59,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t8"  Content="" HorizontalAlignment="Left" Margin="64,59,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t9"  Content="" HorizontalAlignment="Left" Margin="138,59,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t10"  Content="" HorizontalAlignment="Left" Margin="210,59,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t11"  Content="" HorizontalAlignment="Left" Margin="283,59,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t12"  Content="" HorizontalAlignment="Left" Margin="356,59,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="t13"  Content="" HorizontalAlignment="Left" Margin="-9,106,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t14"  Content="" HorizontalAlignment="Left" Margin="64,106,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t15"  Content="" HorizontalAlignment="Left" Margin="138,106,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t16"  Content="" HorizontalAlignment="Left" Margin="210,106,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t17"  Content="" HorizontalAlignment="Left" Margin="283,106,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t18"  Content="" HorizontalAlignment="Left" Margin="356,106,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="t19"  Content="" HorizontalAlignment="Left" Margin="-9,153,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t20"  Content="" HorizontalAlignment="Left" Margin="64,153,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t21"  Content="" HorizontalAlignment="Left" Margin="138,153,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t22"  Content="" HorizontalAlignment="Left" Margin="210,153,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t23"  Content="" HorizontalAlignment="Left" Margin="283,153,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t24"  Content="" HorizontalAlignment="Left" Margin="356,153,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="t25"  Content="" HorizontalAlignment="Left" Margin="-9,200,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t26"  Content="" HorizontalAlignment="Left" Margin="64,200,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t27"  Content="" HorizontalAlignment="Left" Margin="138,200,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t28"  Content="" HorizontalAlignment="Left" Margin="210,200,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t29"  Content="" HorizontalAlignment="Left" Margin="283,200,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t30"  Content="" HorizontalAlignment="Left" Margin="356,200,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <Button x:Name="t31"  Content="" HorizontalAlignment="Left" Margin="-9,247,0,0" VerticalAlignment="Top" Width="100" Height="74" Background="CadetBlue"/>
+            <Button x:Name="t32"  Content="" HorizontalAlignment="Left" Margin="64,247,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t33"  Content="" HorizontalAlignment="Left" Margin="138,247,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t34"  Content="" HorizontalAlignment="Left" Margin="210,247,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t35"  Content="" HorizontalAlignment="Left" Margin="283,247,0,0" VerticalAlignment="Top" Width="100" Height="74"/>
+            <Button x:Name="t36"  Content="" HorizontalAlignment="Left" Margin="356,247,0,0" VerticalAlignment="Top" Height="74" Width="100"/>
+            <ListBox x:Name="listboxScore" BorderThickness="3" HorizontalAlignment="Left" Height="130" Margin="10,553,0,0" VerticalAlignment="Top" Width="121"/>
+            <TextBlock Name="finalSocre" HorizontalAlignment="Left" Margin="143,635,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="138,603,0,0" TextWrapping="Wrap" Text="Your Score" VerticalAlignment="Top" Width="106"/>
+            <TextBlock HorizontalAlignment="Left" Margin="9,512,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            	<Run Text="Each Turn  Score"/>
+            	<LineBreak/>
+            	<Run/>
+            </TextBlock>
         </Grid>
     </Grid>
  
