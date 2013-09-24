@@ -9,6 +9,9 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.IO;
 using Microsoft.Xna.Framework;
+using System.Windows.Threading;
+using System.Diagnostics;
+using System.Threading;
 
 namespace PhoneApp1
 {
@@ -25,23 +28,31 @@ namespace PhoneApp1
         List<string> t_alpha = new List<string>();
         bool bt4C = false;
         string bt4value = "";
-
+        string bt4score = "";
         bool bt5C = false;
         string bt5value = "";
-
+        string bt5score = "";
         bool bt6C = false;
         string bt6value = "";
-
+        string bt6score = "";
         bool bt10C = false;
         string bt10value = "";
+        string bt10score = "";
         bool bt11C = false;
         string bt11value = "";
-
+        string bt11score = "";
         bool bt12C = false;
         string bt12value = "";
-
-        string backword = "";
-        
+        string bt12score = "";
+        string bt4backword = "";
+        string bt5backword = "";
+        string bt6backword = "";
+        string bt10backword = "";
+        string bt11backword = "";
+        string bt12backword = "";
+        int timerDuration = 30;
+        DispatcherTimer timer;    
+        bool chacha = false;
         StreamReader reader ;
 
         // Constructor
@@ -58,26 +69,55 @@ namespace PhoneApp1
             }
            
             newGame();
-            finalSocre.Text = "0";
+          
                         
         }
         public void newGame()
         {
-//            1 Point - A, E, I, L, N, O, R, S, T and U.
-//2 Points - D and G.
-//3 Points - B, C, M and P.
-//4 Points - F, H, V, W and Y.
-//5 Points - K.
-//8 Points - J and X.
-//10 Points - Q and Z
-            
+           timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (s, e) =>
+            {
+                timeCount.Text = "" + timerDuration;
+                if (timerDuration > 0)
+                {
+                    timerDuration--;
+                }
+                else
+                {
+                    timer.Stop();
+                    MessageBox.Show("Times Up");
+                    MessageBoxResult res = MessageBox.Show("Game Time Over : Are you want to play a new Game", "Game?", MessageBoxButton.OKCancel);
+                    if (res == MessageBoxResult.OK)
+                    {
+                        newGame();
+                        timerDuration = 30;
+                    }
+                    else
+                    {
+                        NavigationService.GoBack();
+                    }
+
+                }
+
+            };
+
+
+            //            1 Point - A, E, I, L, N, O, R, S, T and U.
+            //2 Points - D and G.
+            //3 Points - B, C, M and P.
+            //4 Points - F, H, V, W and Y.
+            //5 Points - K.
+            //8 Points - J and X.
+            //10 Points - Q and Z
+
 
             for (var x = 0; x < 6; ++x)
             {
-                int a = r.Next(0,25);
+                int a = r.Next(0, 25);
                 arr[x] = abc[a];
             }
-            
+
             bt4.Content = arr[0];
             bt5.Content = arr[1];
             bt6.Content = arr[2];
@@ -85,8 +125,9 @@ namespace PhoneApp1
             bt11.Content = arr[4];
             bt12.Content = arr[5];
             score();
-            
-    }
+            timer.Start();
+        }
+        
         public void score()
         {
             List<string> point1 = new List<string>();
@@ -346,33 +387,37 @@ namespace PhoneApp1
             }
             else
             {
-                MessageBox.Show(" not found");
+                MessageBox.Show(" OOPS Word Not Exist!!");
                 if (bt4C == true)
                 {
                     bt4.Content = bt4value;
+                    tblock1.Text = bt4score;
                 }
                 if (bt5C == true)
                 {
                     bt5.Content = bt5value;
+                    tblock2.Text = bt5score;
                 }
                 if (bt6C == true)
                 {
                     bt6.Content = bt6value;
-
+                    tblock3.Text = bt6score;
                 }
 
                 if (bt10C == true)
                 {
                     bt10.Content = bt10value;
+                    tblock4.Text = bt10score;
                 }
                 if (bt11C == true)
                 {
                     bt11.Content = bt11value;
+                    tblock5.Text = bt11score;
                 }
                 if (bt12C == true)
                 {
                     bt12.Content = bt12value;
-
+                    tblock6.Text = bt12score;
                 }
                 //bt10.Content = bt10value;
             }
@@ -480,6 +525,8 @@ namespace PhoneApp1
 
         private void bt4_Click(object sender, RoutedEventArgs e)
         {
+            if(!bt4.Content.Equals(""))
+            {
             bt4C = true;
             if (bt1.Content.Equals("") && !bt4.Content.Equals(""))
             {
@@ -487,7 +534,7 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt1.Content += "  ";
                 bt1.Content += tblock1.Text;
-                backword= bt1.Content.ToString()+"/bt4";
+                bt4backword = bt1.Content.ToString() + "/bt4/tblock1";
             }
            else if (bt2.Content.Equals("") && !bt4.Content.Equals(""))
             {
@@ -495,7 +542,7 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt2.Content += "  ";
                 bt2.Content += tblock1.Text;
-                backword = bt2.Content.ToString() + "/bt4";
+                bt5backword = bt2.Content.ToString() + "/bt4/tblock1";
                 
             }
             else if (bt3.Content.Equals("") && !bt4.Content.Equals(""))
@@ -504,7 +551,7 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt4.Content += "  ";
                 bt3.Content += tblock1.Text;
-                backword = bt3.Content.ToString() + "/bt4";
+                bt6backword = bt3.Content.ToString() + "/bt4/tblock1";
             }
             else if (bt7.Content.Equals("") && !bt4.Content.Equals(""))
             {
@@ -512,7 +559,7 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt7.Content += "  ";
                 bt7.Content += tblock1.Text;
-                backword = bt7.Content.ToString() + "/bt4";
+                bt10backword = bt7.Content.ToString() + "/bt4/tblock1";
             }
             else if (bt8.Content.Equals("") && !bt4.Content.Equals(""))
             {
@@ -520,7 +567,7 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt8.Content += "  ";
                 bt8.Content += tblock1.Text;
-                backword = bt8.Content.ToString() + "/bt4";
+                bt11backword = bt8.Content.ToString() + "/bt4/tblock1";
             }
             else if (bt9.Content.Equals("") && !bt4.Content.Equals(""))
             {
@@ -528,18 +575,21 @@ namespace PhoneApp1
                 tb1.Text += bt4.Content.ToString();
                 bt9.Content += "  ";
                 bt9.Content += tblock1.Text;
-                backword = bt9.Content.ToString() + "/bt4";
+                bt12backword = bt9.Content.ToString() + "/bt4/tblock1";
             }
             eachTurnScore.Add(Convert.ToInt32(tblock1.Text));   
             t_alpha.Add(bt4.Content.ToString());
             bt4value = bt4.Content.ToString();
+            bt4score = tblock1.Text;
             bt4.Content = "";
-
-            
+            tblock1.Text = "";
+        }
         }
 
         private void bt5_Click(object sender, RoutedEventArgs e)
         {
+            if(!bt5.Content.Equals(""))
+            {
             bt5C = true;
             if (bt1.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -547,6 +597,8 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt1.Content += "  ";
                 bt1.Content += tblock2.Text;
+                bt4backword = bt1.Content.ToString() + "/bt5/tblock2";
+               
             }
             else if (bt2.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -554,6 +606,7 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt2.Content += "  ";
                 bt2.Content += tblock2.Text;
+                bt5backword = bt2.Content.ToString() + "/bt5/tblock2";
             }
             else if (bt3.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -561,7 +614,7 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt3.Content += "  ";
                 bt3.Content += tblock2.Text;
-                
+                bt6backword = bt3.Content.ToString() + "/bt5/tblock2";
             }
             else if (bt7.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -569,6 +622,7 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt7.Content += "  ";
                 bt7.Content += tblock2.Text;
+                bt10backword = bt7.Content.ToString() + "/bt5/tblock2";
             }
             else if (bt8.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -576,7 +630,7 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt8.Content += "  ";
                 bt8.Content += tblock2.Text;
-                
+                bt11backword = bt8.Content.ToString() + "/bt5/tblock2";
             }
             else if (bt9.Content.Equals("") && !bt5.Content.Equals(""))
             {
@@ -584,15 +638,21 @@ namespace PhoneApp1
                 tb1.Text += bt5.Content.ToString();
                 bt9.Content += "  ";
                 bt9.Content += tblock2.Text;
+                bt12backword = bt9.Content.ToString() + "/bt5/tblock2";
             }
             eachTurnScore.Add(Convert.ToInt32(tblock2.Text));
             t_alpha.Add(bt5.Content.ToString());
             bt5value = bt5.Content.ToString();
+            bt5score = tblock2.Text;
             bt5.Content = "";
+            tblock2.Text = "";
+        }
         }
 
         private void bt6_Click(object sender, RoutedEventArgs e)
         {
+            if(!bt6.Content.Equals(""))
+            {
             bt6C = true;
             if (bt1.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -600,6 +660,7 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt1.Content += "  ";
                 bt1.Content += tblock3.Text;
+                bt6backword = bt1.Content.ToString() + "/bt6/tblock3";
             }
             else if (bt2.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -607,6 +668,7 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt2.Content += "  ";
                 bt2.Content += tblock3.Text;
+                bt6backword = bt2.Content.ToString() + "/bt6/tblock3";
             }
             else if (bt3.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -614,6 +676,7 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt3.Content += "  ";
                 bt3.Content += tblock3.Text;
+                bt6backword = bt3.Content.ToString() + "/bt6/tblock3";
             }
             else if (bt7.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -621,6 +684,7 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt7.Content += "  ";
                 bt7.Content += tblock3.Text;
+                bt6backword = bt7.Content.ToString() + "/bt6/tblock3";
             }
             else if (bt8.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -628,6 +692,7 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt8.Content += "  ";
                 bt8.Content += tblock3.Text;
+                bt6backword = bt8.Content.ToString() + "/bt6/tblock3";
             }
             else if (bt9.Content.Equals("") && !bt6.Content.Equals(""))
             {
@@ -635,15 +700,21 @@ namespace PhoneApp1
                 tb1.Text += bt6.Content.ToString();
                 bt9.Content += "  ";
                 bt9.Content += tblock3.Text;
+                bt6backword = bt9.Content.ToString() + "/bt6/tblock3";
             }
             eachTurnScore.Add(Convert.ToInt32(tblock3.Text));
             t_alpha.Add(bt6.Content.ToString());
             bt6value = bt6.Content.ToString();
+            bt6score = tblock3.Text;
             bt6.Content = "";
+            tblock3.Text = "";
+        }
         }
 
         private void bt10_Click(object sender, RoutedEventArgs e)
         {
+            if(!bt10.Content.Equals(""))
+            {
             bt10C = true;
             if (bt1.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -651,6 +722,7 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt1.Content += "  ";
                 bt1.Content += tblock4.Text;
+                bt10backword = bt1.Content.ToString() + "/bt10/tblock4";
             }
             else if (bt2.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -658,6 +730,7 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt2.Content += "  ";
                 bt2.Content += tblock4.Text;
+                bt10backword = bt2.Content.ToString() + "/bt10/tblock4";
             }
             else if (bt3.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -665,6 +738,7 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt3.Content += "  ";
                 bt3.Content += tblock4.Text;
+                bt10backword = bt3.Content.ToString() + "/bt10/tblock4";
             }
             else if (bt7.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -672,6 +746,7 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt7.Content += "  ";
                 bt7.Content += tblock4.Text;
+                bt10backword = bt7.Content.ToString() + "/bt10/tblock4";
             }
             else if (bt8.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -679,6 +754,7 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt8.Content += "  ";
                 bt8.Content += tblock4.Text;
+                bt10backword = bt8.Content.ToString() + "/bt10/tblock4";
             }
             else if (bt9.Content.Equals("") && !bt10.Content.Equals(""))
             {
@@ -686,115 +762,141 @@ namespace PhoneApp1
                 tb1.Text += bt10.Content.ToString();
                 bt9.Content += "  ";
                 bt9.Content += tblock4.Text;
+                bt10backword = bt9.Content.ToString() + "/bt10/tblock4";
             }
             eachTurnScore.Add(Convert.ToInt32(tblock4.Text));
             t_alpha.Add(bt10.Content.ToString());
             bt10value = bt10.Content.ToString();
+            bt10score = tblock4.Text;
             bt10.Content = "";
+            tblock4.Text = "";
+        }
         }
 
         private void bt11_Click(object sender, RoutedEventArgs e)
         {
-            bt11C = true;
-            if (bt1.Content.Equals("") && !bt11.Content.Equals(""))
+            if (!bt11.Content.Equals(""))
             {
-                bt1.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt1.Content += "  ";
-                bt1.Content += tblock5.Text;
+                bt11C = true;
+                if (bt1.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt1.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt1.Content += "  ";
+                    bt1.Content += tblock5.Text;
+                    bt11backword = bt1.Content.ToString() + "/bt11/tblock5";
+                }
+                else if (bt2.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt2.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt2.Content += "  ";
+                    bt2.Content += tblock5.Text;
+                    bt11backword = bt2.Content.ToString() + "/bt11/tblock5";
+                }
+                else if (bt3.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt3.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt3.Content += "  ";
+                    bt3.Content += tblock5.Text;
+                    bt11backword = bt3.Content.ToString() + "/bt11/tblock5";
+                }
+                else if (bt7.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt7.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt7.Content += "  ";
+                    bt7.Content += tblock5.Text;
+                    bt11backword = bt7.Content.ToString() + "/bt11/tblock5";
+                }
+                else if (bt8.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt8.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt8.Content += "  ";
+                    bt8.Content += tblock5.Text;
+                    bt11backword = bt8.Content.ToString() + "/bt11/tblock5";
+                }
+                else if (bt9.Content.Equals("") && !bt11.Content.Equals(""))
+                {
+                    bt9.Content = bt11.Content;
+                    tb1.Text += bt11.Content.ToString();
+                    bt9.Content += "  ";
+                    bt9.Content += tblock5.Text;
+                    bt11backword = bt9.Content.ToString() + "/bt11/tblock5";
+                }
+                eachTurnScore.Add(Convert.ToInt32(tblock5.Text));
+                t_alpha.Add(bt11.Content.ToString());
+                bt11value = bt11.Content.ToString();
+                bt11score = tblock5.Text;
+                bt11.Content = "";
+                tblock5.Text = "";
             }
-            else if (bt2.Content.Equals("") && !bt11.Content.Equals(""))
-            {
-                bt2.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt2.Content += "  ";
-                bt2.Content += tblock5.Text;
-            }
-            else if (bt3.Content.Equals("") && !bt11.Content.Equals(""))
-            {
-                bt3.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt3.Content += "  ";
-                bt3.Content += tblock5.Text;
-            }
-            else if (bt7.Content.Equals("") && !bt11.Content.Equals(""))
-            {
-                bt7.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt7.Content += "  ";
-                bt7.Content += tblock5.Text;
-            }
-            else if (bt8.Content.Equals("") && !bt11.Content.Equals(""))
-            {
-                bt8.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt8.Content += "  ";
-                bt8.Content += tblock5.Text;
-            }
-            else if (bt9.Content.Equals("") && !bt11.Content.Equals(""))
-            {
-                bt9.Content = bt11.Content;
-                tb1.Text += bt11.Content.ToString();
-                bt9.Content += "  ";
-                bt9.Content += tblock5.Text;
-            }
-            eachTurnScore.Add(Convert.ToInt32(tblock5.Text));
-            t_alpha.Add(bt11.Content.ToString());
-            bt11value = bt11.Content.ToString();
-            bt11.Content = "";
         }
 
         private void bt12_Click(object sender, RoutedEventArgs e)
         {
-            bt12C = true;
-            if (bt1.Content.Equals("") && !bt12.Content.Equals(""))
+            if (!bt12.Content.Equals(""))
             {
-                bt1.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt1.Content += "  ";
-                bt1.Content += tblock6.Text;
+                bt12C = true;
+                if (bt1.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt1.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt1.Content += "  ";
+                    bt1.Content += tblock6.Text;
+                    bt12backword = bt1.Content.ToString() + "/bt12/tblock6";
+                }
+                else if (bt2.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt2.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt2.Content += "  ";
+                    bt2.Content += tblock6.Text;
+                    bt12backword = bt2.Content.ToString() + "/bt12/tblock6";
+                }
+                else if (bt3.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt3.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt3.Content += "  ";
+                    bt3.Content += tblock6.Text;
+                    bt12backword = bt3.Content.ToString() + "/bt12/tblock6";
+                }
+                else if (bt7.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt7.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt7.Content += "  ";
+                    bt7.Content += tblock6.Text;
+                    bt12backword = bt7.Content.ToString() + "/bt12/tblock6";
+                }
+                else if (bt8.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt8.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt8.Content += "  ";
+                    bt8.Content += tblock6.Text;
+                    bt12backword = bt8.Content.ToString() + "/bt12/tblock6";
+                }
+                else if (bt9.Content.Equals("") && !bt12.Content.Equals(""))
+                {
+                    bt9.Content = bt12.Content;
+                    tb1.Text += bt12.Content.ToString();
+                    bt9.Content += "  ";
+                    bt9.Content += tblock6.Text;
+                    bt12backword = bt9.Content.ToString() + "/bt12/tblock6";
+                }
+                eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
+
+                eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
+                t_alpha.Add(bt12.Content.ToString());
+                bt12value = bt12.Content.ToString();
+                bt12score = tblock6.Text;
+                bt12.Content = "";
+                tblock6.Text = "";
             }
-            else if (bt2.Content.Equals("") && !bt12.Content.Equals(""))
-            {
-                bt2.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt2.Content += "  ";
-                bt2.Content += tblock6.Text;
-            }
-            else if (bt3.Content.Equals("") && !bt12.Content.Equals(""))
-            {
-                bt3.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt3.Content += "  ";
-                bt3.Content += tblock6.Text;
-            }
-            else if (bt7.Content.Equals("") && !bt12.Content.Equals(""))
-            {
-                bt7.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt7.Content += "  ";
-                bt7.Content += tblock6.Text;
-            }
-            else if (bt8.Content.Equals("") && !bt12.Content.Equals(""))
-            {
-                bt8.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt8.Content += "  ";
-                bt8.Content += tblock6.Text;
-            }
-            else if (bt9.Content.Equals("") && !bt12.Content.Equals(""))
-            {
-                bt9.Content = bt12.Content;
-                tb1.Text += bt12.Content.ToString();
-                bt9.Content += "  ";
-                bt9.Content += tblock6.Text;
-            }
-            eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
-                
-            eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
-            t_alpha.Add(bt12.Content.ToString());
-            bt12value = bt12.Content.ToString();
-            bt12.Content = "";
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -814,8 +916,6 @@ namespace PhoneApp1
                 changeArray[4] = bt11.Content.ToString();
                 changeArray[5] = bt12.Content.ToString();
 
-
-
                 Random rnd = new Random();
                 for (int inx = changeArray.Length - 1; inx > 0; --inx)
                 {
@@ -824,6 +924,7 @@ namespace PhoneApp1
                     changeArray[inx] = changeArray[position];
                     changeArray[position] = temp;
                 }
+                
 
                 bt4.Content = changeArray[0];
                 bt5.Content = changeArray[1];
@@ -832,21 +933,90 @@ namespace PhoneApp1
                 bt10.Content = changeArray[3];
                 bt11.Content = changeArray[4];
                 bt12.Content = changeArray[5];
-                
+                score();
             }
 
         }
 
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
-            if (!bt1.Content.Equals(""))
-            {
-                string[] str = backword.Split('/');
-                MessageBox.Show(str[1]);
-                var b = (Button)FindName(str[1]);
-                b.Content = str[0];
-                bt1.Content = "";
-            }
+            //if (!bt4backword.Equals(""))
+            //{
+            //    string[] str = bt4backword.Split('/');
+            //    string content = str[0];
+            //    string[] split_content = content.Split(' ');
+
+            //    var b = (Button)FindName(str[1]);
+            //    b.Content = split_content[0];
+
+            //    var t = (TextBlock)FindName(str[2]);
+            //    t.Text = split_content[2];
+            //    bt1.Content = "";
+            //}
+            //if (!bt5backword.Equals(""))
+            //{
+            //    string[] str = bt5backword.Split('/');
+            //    string content = str[0];
+            //    string[] split_content = content.Split(' ');
+
+            //    var b = (Button)FindName(str[1]);
+            //    b.Content = split_content[0];
+
+            //    var t = (TextBlock)FindName(str[2]);
+            //    t.Text = split_content[2];
+            //    bt1.Content = "";
+            //}
+            //if (!bt6backword.Equals(""))
+            //{
+            //    string[] str = bt6backword.Split('/');
+            //    string content = str[0];
+            //    string[] split_content = content.Split(' ');
+
+            //    var b = (Button)FindName(str[1]);
+            //    b.Content = split_content[0];
+
+            //    var t = (TextBlock)FindName(str[2]);
+            //    t.Text = split_content[2];
+            //    bt1.Content = "";
+            //}
+            //if (!bt10backword.Equals(""))
+            //{
+            //    string[] str = bt10backword.Split('/');
+            //    string content = str[0];
+            //    string[] split_content = content.Split(' ');
+
+            //    var b = (Button)FindName(str[1]);
+            //    b.Content = split_content[0];
+
+            //    var t = (TextBlock)FindName(str[2]);
+            //    t.Text = split_content[2];
+            //    bt1.Content = "";
+            //}
+
+        }
+
+        private void bt2_Click(object sender, RoutedEventArgs e)
+        {
+            //string[] str = bt4backword.Split('/');
+
+            //string content = str[0];
+
+            //string[] split_content = content.Split(' ');
+
+            //var b = (Button)FindName(str[1]);
+            //b.Content = split_content[0];
+
+            //var t = (TextBlock)FindName(str[2]);
+            //t.Text = split_content[2];
+            //bt1.Content = "";
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            timerDuration = 30;
+            newGame();
         }
     }
 }
