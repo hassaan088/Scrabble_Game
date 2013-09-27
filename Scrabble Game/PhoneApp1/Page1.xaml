@@ -9,12 +9,12 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Landscape"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="10,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -24,12 +24,14 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="12,10,12,0" Grid.RowSpan="2">
+        <Grid x:Name="ContentPanel" Margin="10,10,0,38" Grid.RowSpan="2">
 
             <Grid.Background>
                 <ImageBrush ImageSource="images.jpg"></ImageBrush>
             </Grid.Background>
-            <Button Content="Start New Game" HorizontalAlignment="Left" Margin="176,676,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.152,-1.88" Width="248" Click="Button_Click_1"/>
+            <Button Content="Start New Game" HorizontalAlignment="Left" Margin="10,339,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.152,-1.88" Width="261" Click="Button_Click_1" Height="83">
+               
+            </Button>
         </Grid>
     </Grid>
 
