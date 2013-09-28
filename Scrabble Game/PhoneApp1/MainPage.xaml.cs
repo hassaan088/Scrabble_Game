@@ -13,18 +13,22 @@ using System.Windows.Threading;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace PhoneApp1
 {
     public partial class MainPage : PhoneApplicationPage
     {
         List<string> str = new List<string>();
-        string[] abc = new string[26];
+        string[] abc = new string[21];
+        string[] vwl = new string[5];
         string mesg1 = "words.txt";
         List<int> eachTurnScore = new List<int>();
         List<int> finalScore = new List<int>();
         Random r = new Random();
-        string[] arr = new string[7];
+        Random rr = new Random();
+        string[] arr = new string[5];
+        string[] arr1 = new string[2];
         //  int[] score = new int[6];
         List<string> t_alpha = new List<string>();
         bool bt4C = false;
@@ -57,7 +61,7 @@ namespace PhoneApp1
         string bt12backword = "";
         int timerDuration = 30;
         DispatcherTimer timer;
-        bool chacha = false;
+        
         StreamReader reader;
 
         // Constructor
@@ -65,6 +69,7 @@ namespace PhoneApp1
         {
             InitializeComponent();
             abcd();
+            vowles();
             reader = new StreamReader(TitleContainer.OpenStream(mesg1));
             String word = reader.ReadLine();
             while (word != null)
@@ -92,11 +97,11 @@ namespace PhoneApp1
                 else
                 {
                     timer.Stop();
-                    MessageBox.Show("Times Up");
+                    MessageBox.Show("Times Up!!!! Your Score is " + finalScore.Sum().ToString());
                     MessageBoxResult res = MessageBox.Show("Game Time Over : Are you want to play a new Game", "Game?", MessageBoxButton.OKCancel);
                     if (res == MessageBoxResult.OK)
                     {
-                       
+
                         newGame();
                         timerDuration = 30;
                     }
@@ -119,19 +124,25 @@ namespace PhoneApp1
             //10 Points - Q and Z
 
 
-            for (var x = 0; x < 7; ++x)
+            for (var x = 0; x < 5; ++x)
             {
-                int a = r.Next(0, 25);
+                int a = r.Next(0, 21);
                 arr[x] = abc[a];
             }
-
+          
+            for (var x = 0; x < 2; ++x)
+            {
+                
+                int a = rr.Next(0, 4);
+                arr1[x] = vwl[a];
+            }
             bt4.Content = arr[0];
-            bt5.Content = arr[1];
-            bt6.Content = arr[2];
-            bt10.Content = arr[3];
-            bt11.Content = arr[4];
-            bt12.Content = arr[5];
-            bt13.Content = arr[6];
+                                        bt5.Content = arr1[0];
+            bt6.Content = arr[1];
+            bt10.Content = arr[2];
+                                        bt11.Content = arr1[1];
+            bt12.Content = arr[3];
+            bt13.Content = arr[4];
             score();
             timer.Start();
         }
@@ -139,7 +150,7 @@ namespace PhoneApp1
         public void clearAllData()
         {
             finalScore.Clear();
-            listboxScore.ItemsSource = null;
+            listboxScore.Items.Clear();
             bt1.Content = "";
             bt2.Content = "";
             bt3.Content = "";
@@ -148,8 +159,12 @@ namespace PhoneApp1
             bt9.Content = "";
             bt14.Content = "";
             tb1.Text = "";
-
-            for (int i = 1; i <= 64; i++)
+            var image = new ImageBrush();
+            Uri uri = new Uri("star.PNG", UriKind.Relative);
+            image.ImageSource = new BitmapImage(uri);
+            t1.Background = image;
+            t1.Content="";
+            for (int i = 2; i <= 64; i++)
             {
                 //if()
                 var a = this.FindName("t" + i);
@@ -158,8 +173,47 @@ namespace PhoneApp1
 
                 if (b != null)
                 {
-                    b.Content = "";
-                    b.Background = new SolidColorBrush(Colors.Black);
+                    if(b.Name.Equals("t4")||b.Name.Equals("t8")|| b.Name.Equals("t25")|| b.Name.Equals("t32")|| b.Name.Equals("t57")||b.Name.Equals("t60")|| b.Name.Equals("t64"))
+                    {
+                        image = new ImageBrush();
+                        uri = new Uri("tw.PNG", UriKind.Relative);
+                        image.ImageSource = new BitmapImage(uri);
+                        b.Background = image;
+                        b.Content = "";
+                    }
+                    else if (b.Name.Equals("t10") || b.Name.Equals("t19")|| b.Name.Equals("37") || b.Name.Equals("t46") || b.Name.Equals("t55") || b.Name.Equals("t15") || b.Name.Equals("t22") || b.Name.Equals("t50") || b.Name.Equals("t43"))
+                    {
+                        image = new ImageBrush();
+                        uri = new Uri("dw.PNG", UriKind.Relative);
+                        image.ImageSource = new BitmapImage(uri);
+                        b.Background = image;
+                        b.Content = "";
+                    }
+                    else if (b.Name.Equals("t28") || b.Name.Equals("t29") || b.Name.Equals("t37") || b.Name.Equals("t36"))
+                    {
+                        image = new ImageBrush();
+                        uri = new Uri("tl.PNG", UriKind.Relative);
+                        image.ImageSource = new BitmapImage(uri);
+                        b.Background = image;
+                        b.Content = "";
+                    }
+                    else if (b.Name.Equals("t3") || b.Name.Equals("t5") || b.Name.Equals("t12") || b.Name.Equals("t17") || b.Name.Equals("t26") || b.Name.Equals("t33") || b.Name.Equals("t24") || b.Name.Equals("t31") || b.Name.Equals("t40") || b.Name.Equals("t52") || b.Name.Equals("t59") || b.Name.Equals("t61"))
+                    {
+                        image = new ImageBrush();
+                        uri = new Uri("dl.PNG", UriKind.Relative);
+                        image.ImageSource = new BitmapImage(uri);
+                        b.Background = image;
+                        b.Content = "";
+                    }
+                    else
+                    {
+                        b.Content = "";
+                        image = new ImageBrush();
+                        uri = new Uri("btBack.PNG", UriKind.Relative);
+                        image.ImageSource = new BitmapImage(uri);
+                        b.Background = image;
+                    }
+                  //  b.Background = new SolidColorBrush(Colors.Gray);
                 }
             }
         }
@@ -414,15 +468,17 @@ namespace PhoneApp1
 
         private void sumbit_click(object sender, RoutedEventArgs e)
         {
-            String st = tb1.Text;
-            MessageBox.Show(tb1.Text);
+        
+           String st = tb1.Text;
+           // MessageBox.Show(tb1.Text);
             if (tb1.Text.Length > 1)
             {
                 if (str.Contains(st.ToLower()))
                 {
                     finalScore.Add(eachTurnScore.Sum());
-                    listboxScore.ItemsSource += eachTurnScore.Sum().ToString();
+                    listboxScore.Items.Add(eachTurnScore.Sum());
                     finalSocre.Text = finalScore.Sum().ToString();
+                                        
                     for (int j = 0; j < t_alpha.Count; j++)
                     {
                         for (int i = 1; i <= 64; i++)
@@ -443,13 +499,11 @@ namespace PhoneApp1
                                     }
                                     else
                                     {
-                                        //MessageBox.Show(t_alpha[j]);
                                         b.Content = ".";//t_alpha[j];
-                                        b.Background = new SolidColorBrush(Colors.DarkGray);
+                                        b.Background = new SolidColorBrush(Colors.Black);
                                         break;
-
                                     }
-                                                                    }
+                                }
                             }
                         }
                     }
@@ -487,37 +541,44 @@ namespace PhoneApp1
             {
                 bt4.Content = bt4value;
                 tblock1.Text = bt4score;
+                bt4C = false;
             }
             if (bt5C == true)
             {
                 bt5.Content = bt5value;
                 tblock2.Text = bt5score;
+                bt5C = false;
             }
             if (bt6C == true)
             {
                 bt6.Content = bt6value;
                 tblock3.Text = bt6score;
+                bt6C = false;
             }
 
             if (bt10C == true)
             {
                 bt10.Content = bt10value;
                 tblock4.Text = bt10score;
+                bt10C = false;
             }
             if (bt11C == true)
             {
                 bt11.Content = bt11value;
                 tblock5.Text = bt11score;
+                bt11C = false;
             }
             if (bt12C == true)
             {
                 bt12.Content = bt12value;
                 tblock6.Text = bt12score;
+                bt12C = false;
             }
             if (bt13C == true)
             {
                 bt13.Content = bt13value;
                 tblock7.Text = bt13score;
+                bt13C = false;
             }
             bt1.Content = "";
             bt2.Content = "";
@@ -540,7 +601,7 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
+                    int a = r.Next(0, 21);
                     bt4.Content = abc[a];
                     score();
                 }
@@ -549,8 +610,9 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
-                    bt5.Content = abc[a];
+
+                    int a = rr.Next(0, 4);
+                    bt5.Content = vwl[a];
                     score();
                 }
             }
@@ -558,7 +620,7 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
+                    int a = r.Next(0, 21);
                     bt6.Content = abc[a];
                     score();
                 }
@@ -567,7 +629,7 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
+                    int a = r.Next(0, 21);
                     bt10.Content = abc[a];
                     score();
                 }
@@ -576,8 +638,9 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
-                    bt11.Content = abc[a];
+
+                    int a = rr.Next(0, 4);
+                    bt11.Content= vwl[a];
                     score();
                 }
             }
@@ -585,7 +648,7 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
+                    int a = r.Next(0, 21);
                     bt12.Content = abc[a];
                     score();
                 }
@@ -594,7 +657,7 @@ namespace PhoneApp1
             {
                 for (var x = 0; x < 1; ++x)
                 {
-                    int a = r.Next(0, 25);
+                    int a = r.Next(0, 21);
                     bt13.Content = abc[a];
                     score();
                 }
@@ -602,36 +665,43 @@ namespace PhoneApp1
         }
         public void abcd()
         {
-            abc[0] = "A";
-            abc[1] = "B";
-            abc[2] = "C";
-            abc[3] = "D";
-            abc[4] = "E";
-            abc[5] = "F";
-            abc[6] = "G";
-            abc[7] = "H";
-            abc[8] = "I";
-            abc[9] = "J";
-            abc[10] = "K";
-            abc[11] = "L";
-            abc[12] = "M";
-            abc[13] = "N";
-            abc[14] = "O";
-            abc[15] = "P";
-            abc[16] = "Q";
-            abc[17] = "R";
-            abc[18] = "S";
-            abc[19] = "T";
-            abc[20] = "U";
-            abc[21] = "V";
-            abc[22] = "W";
-            abc[23] = "X";
-            abc[24] = "Y";
-            abc[25] = "Z";
+            
+            abc[0] = "B";
+            abc[1] = "C";
+            abc[2] = "D";
+            abc[3] = "F";
+            abc[4] = "G";
+            abc[5] = "H";
+            abc[6] = "J";
+            abc[7] = "K";
+            abc[8] = "L";
+            abc[9] = "M";
+            abc[10] = "N";
+           
+            abc[11] = "P";
+            abc[12] = "Q";
+            abc[13] = "R";
+            abc[14] = "S";
+            abc[15] = "T";
+
+            abc[16] = "V";
+            abc[17] = "W";
+            abc[18] = "X";
+            abc[19] = "Y";
+            abc[20] = "Z";
+        }
+        public void vowles()
+        {
+            vwl[0] = "A";
+            vwl[1] = "E";
+            vwl[2] = "I";
+            vwl[3] = "O";
+            vwl[4] = "U";
         }
 
         private void bt4_Click(object sender, RoutedEventArgs e)
         {
+            
             if (!bt4.Content.Equals(""))
             {
                 bt4C = true;
@@ -639,7 +709,7 @@ namespace PhoneApp1
                 {
                     bt1.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
-                    bt1.Content += "  ";
+                    bt1.Content += " ";
                     bt1.Content += tblock1.Text;
                     bt4backword = bt1.Content.ToString() + "/bt4/tblock1";
                 }
@@ -692,7 +762,9 @@ namespace PhoneApp1
                     bt14.Content += tblock1.Text;
                    // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
+
                 eachTurnScore.Add(Convert.ToInt32(tblock1.Text));
+                                 
                 t_alpha.Add(bt4.Content.ToString());
                 bt4value = bt4.Content.ToString();
                 bt4score = tblock1.Text;
@@ -763,6 +835,9 @@ namespace PhoneApp1
                     bt14.Content += tblock2.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
+
+                
+                
                 eachTurnScore.Add(Convert.ToInt32(tblock2.Text));
                 t_alpha.Add(bt5.Content.ToString());
                 bt5value = bt5.Content.ToString();
@@ -833,6 +908,7 @@ namespace PhoneApp1
                     bt14.Content += tblock3.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
+
                 eachTurnScore.Add(Convert.ToInt32(tblock3.Text));
                 t_alpha.Add(bt6.Content.ToString());
                 bt6value = bt6.Content.ToString();
@@ -904,6 +980,8 @@ namespace PhoneApp1
                     bt14.Content += tblock4.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
+
+                
                 eachTurnScore.Add(Convert.ToInt32(tblock4.Text));
                 t_alpha.Add(bt10.Content.ToString());
                 bt10value = bt10.Content.ToString();
@@ -974,7 +1052,8 @@ namespace PhoneApp1
                     bt14.Content += tblock5.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
-                eachTurnScore.Add(Convert.ToInt32(tblock5.Text));
+
+                 eachTurnScore.Add(Convert.ToInt32(tblock5.Text));
                 t_alpha.Add(bt11.Content.ToString());
                 bt11value = bt11.Content.ToString();
                 bt11score = tblock5.Text;
@@ -1044,9 +1123,8 @@ namespace PhoneApp1
                     bt14.Content += tblock6.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
-                eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
 
-                eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
+                 eachTurnScore.Add(Convert.ToInt32(tblock6.Text));
                 t_alpha.Add(bt12.Content.ToString());
                 bt12value = bt12.Content.ToString();
                 bt12score = tblock6.Text;
@@ -1061,9 +1139,9 @@ namespace PhoneApp1
         }
         public void mixup()
         {
-            string[] changeArray = new string[6];
+            string[] changeArray = new string[7];
             List<int> checkrepeat = new List<int>();
-            if (!bt4.Content.Equals("") && !bt5.Content.Equals("") && !bt6.Content.Equals("") && !bt10.Content.Equals("") && !bt11.Content.Equals("") && !bt12.Content.Equals(""))
+            if (!bt4.Content.Equals("") && !bt5.Content.Equals("") && !bt6.Content.Equals("") && !bt10.Content.Equals("") && !bt11.Content.Equals("") && !bt12.Content.Equals("") && !bt13.Content.Equals(""))
             {
                 changeArray[0] = bt4.Content.ToString();
                 changeArray[1] = bt5.Content.ToString();
@@ -1071,7 +1149,7 @@ namespace PhoneApp1
                 changeArray[3] = bt10.Content.ToString();
                 changeArray[4] = bt11.Content.ToString();
                 changeArray[5] = bt12.Content.ToString();
-
+                changeArray[6] = bt13.Content.ToString();
                 Random rnd = new Random();
                 for (int inx = changeArray.Length - 1; inx > 0; --inx)
                 {
@@ -1089,6 +1167,7 @@ namespace PhoneApp1
                 bt10.Content = changeArray[3];
                 bt11.Content = changeArray[4];
                 bt12.Content = changeArray[5];
+                bt13.Content = changeArray[6];
                 score();
             }
 
@@ -1170,8 +1249,8 @@ namespace PhoneApp1
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            timer.Stop();
-            timerDuration = 30;
+            //timer.Stop();
+            //timerDuration = 30;
             newGame();
         }
 
@@ -1237,6 +1316,8 @@ namespace PhoneApp1
                     bt14.Content += tblock7.Text;
                     // bt12backword = bt14.Content.ToString() + "/bt4/tblock1";
                 }
+
+                
                 eachTurnScore.Add(Convert.ToInt32(tblock7.Text));
                 t_alpha.Add(bt13.Content.ToString());
                 bt13value = bt13.Content.ToString();

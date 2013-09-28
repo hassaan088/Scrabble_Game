@@ -92,11 +92,20 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="back.PNG" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="btBack.PNG" />
+    <Content Include="Capture.PNG" />
+    <Content Include="dl.PNG" />
+    <Content Include="dw.PNG" />
+    <Content Include="front.jpg" />
     <Content Include="images.jpg" />
     <Content Include="SplashScreenImage.jpg" />
+    <Content Include="star.PNG" />
+    <Content Include="tl.PNG" />
+    <Content Include="tw.PNG" />
     <Content Include="words.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

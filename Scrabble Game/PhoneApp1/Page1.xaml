@@ -27,9 +27,9 @@
         <Grid x:Name="ContentPanel" Margin="10,10,0,38" Grid.RowSpan="2">
 
             <Grid.Background>
-                <ImageBrush ImageSource="images.jpg"></ImageBrush>
+                <ImageBrush ImageSource="front.jpg"></ImageBrush>
             </Grid.Background>
-            <Button Content="Start New Game" HorizontalAlignment="Left" Margin="10,339,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.152,-1.88" Width="261" Click="Button_Click_1" Height="83">
+            <Button Content="Start New Game" HorizontalAlignment="Left" Margin="212,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.152,-1.88" Width="261" Click="Button_Click_1" Height="83">
                
             </Button>
         </Grid>
