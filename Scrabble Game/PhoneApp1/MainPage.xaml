@@ -28,32 +28,47 @@
             <Grid.Background>
                 <ImageBrush ImageSource="back.PNG" Stretch="Fill"/>
             </Grid.Background>
-
+            <Popup Name="xchange" IsOpen="False" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Margin="0,0,600,400">
+                <StackPanel Width="601" Orientation="Horizontal" Background="Brown">
+                  <Button x:Name="btxc1"  VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc1_Click"/>
+                    <Button x:Name="btxc2"  VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc2_Click"/>
+                    <Button x:Name="btxc3"  VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc3_Click"/>
+                    <Button x:Name="btxc4"  VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc4_Click"/>
+                    <Button x:Name="btxc5"   VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc5_Click"/>
+                    <Button x:Name="btxc6"  VerticalAlignment="Top" Width="84" Height="80"  Margin="0,28,0,10" Click="btxc6_Click"/>
+                    <Button x:Name="btxc7"  VerticalAlignment="Top" Height="80" Width="84"  Margin="0,28,0,10" Click="btxc7_Click"/>
+                     </StackPanel>
+                   </Popup>
+            <Popup Name="missing" IsOpen="False" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Margin="0,0,600,400">
+                <StackPanel Orientation="Horizontal" Background="Brown" Height="269">
+                    <ListBox Name="listmiss" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="253" Height="259" SelectionChanged="listmiss_SelectionChanged" />
+                </StackPanel>
+            </Popup>
             <Button Content="Pass" VerticalContentAlignment="Center"  HorizontalAlignment="Left"  Margin="171,361,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.338,0.358" Width="136" Click="sumbit_click" Height="69" FontFamily="Aharoni" FontWeight="Bold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="22">
                 <Button.Background>
                    <SolidColorBrush Color="#FF290C29"/>
                 </Button.Background>
             </Button>
             <TextBox x:Name="tb1" Visibility="Collapsed" HorizontalAlignment="Left" Height="94" Margin="24,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
-            <Button x:Name="bt1"  Content="" HorizontalAlignment="Left" Margin="216,281,0,0" VerticalAlignment="Top" Width="95" Height="74"  Click="bt1_Click" FontSize="22"/>
-            <Button x:Name="bt2"  Content="" HorizontalAlignment="Left" Margin="284,281,0,0" VerticalAlignment="Top" Width="95" Height="74" Click="bt2_Click" FontSize="22"/>
-            <Button x:Name="bt3"  Content="" HorizontalAlignment="Left" Margin="353,281,0,0" VerticalAlignment="Top" Width="95" Height="74" FontSize="22"/>
-            <Button x:Name="bt4"  HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="289,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt4_Click"/>
-            <Button x:Name="bt5" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="346,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt5_Click"/>
-            <Button x:Name="bt6" HorizontalContentAlignment="Left" Margin="402,352,240,0" VerticalAlignment="Top" Height="80" Width="84" Click="bt6_Click"/>
-            <Button x:Name="bt7"  Content="" HorizontalAlignment="Left" Margin="422,281,0,0" VerticalAlignment="Top" Width="95" Height="74" FontSize="22"/>
-            <Button x:Name="bt8"  Content="" HorizontalAlignment="Left" Margin="490,281,0,0" VerticalAlignment="Top" Width="95" Height="74" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-            <Button x:Name="bt9"  Content="" HorizontalAlignment="Left" Margin="558,281,0,0" VerticalAlignment="Top" Height="74" Width="95" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-            <Button x:Name="bt10" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="460,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt10_Click"/>
-            <Button x:Name="bt12" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="574,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt12_Click"/>
-            <Button x:Name="bt11" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="516,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt11_Click"/>
-            <Button Content="Mix Up" HorizontalAlignment="Left" Margin="12,342,0,0" VerticalAlignment="Top" Width="147" Click="Button_Click_2" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Height="76" FontSize="22"/>
-            <TextBlock Name="tblock1" Text="tb1" TextAlignment="Right" HorizontalAlignment="Left" Margin="324,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" />
-            <TextBlock Name="tblock2" Text="tb2" HorizontalAlignment="Left" TextAlignment="Right" Margin="381,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
-            <TextBlock Name="tblock3" Text="tb3" HorizontalAlignment="Left" Margin="439,391,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
-            <TextBlock  Name="tblock4" Text="tb4" HorizontalAlignment="Left" Margin="496,391,0,0" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Top"  Width="30"/>
-            <TextBlock Name="tblock5" Text="tb5" HorizontalAlignment="Left" Margin="554,391,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30"/>
-            <TextBlock Name="tblock6" Text="tb6" HorizontalAlignment="Left" Margin="612,391,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30" RenderTransformOrigin="2.733,0.426"/>
+            <Button x:Name="bt1"  Content="" HorizontalAlignment="Left" Margin="210,265,0,0" VerticalAlignment="Top" Width="95" Height="74"  Click="bt1_Click" FontSize="22"/>
+            <Button x:Name="bt2"  Content="" HorizontalAlignment="Left" Margin="278,265,0,0" VerticalAlignment="Top" Width="95" Height="74" Click="bt2_Click" FontSize="22"/>
+            <Button x:Name="bt3"  Content="" HorizontalAlignment="Left" Margin="347,265,0,0" VerticalAlignment="Top" Width="95" Height="74" FontSize="22" Click="bt3RollBack"/>
+            <Button x:Name="bt4"  HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="289,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt4_Click"/>
+            <Button x:Name="bt5" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="346,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt5_Click"/>
+            <Button x:Name="bt6" HorizontalContentAlignment="Left" Margin="402,330,240,0" VerticalAlignment="Top" Height="80" Width="84" Click="bt6_Click"/>
+            <Button x:Name="bt7"  Content="" HorizontalAlignment="Left" Margin="416,265,0,0" VerticalAlignment="Top" Width="95" Height="74" FontSize="22" Click="bt7RollBack"/>
+            <Button x:Name="bt8"  Content="" HorizontalAlignment="Left" Margin="484,265,0,0" VerticalAlignment="Top" Width="95" Height="74" RenderTransformOrigin="0.5,0.5" FontSize="22" Click="bt8RollBack"/>
+            <Button x:Name="bt9"  Content="" HorizontalAlignment="Left" Margin="552,265,0,0" VerticalAlignment="Top" Height="74" Width="95" RenderTransformOrigin="0.5,0.5" FontSize="22" Click="bt9RollBac"/>
+            <Button x:Name="bt10" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="460,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt10_Click"/>
+            <Button x:Name="bt12" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="574,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt12_Click"/>
+            <Button x:Name="bt11" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="516,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt11_Click"/>
+            <Button Content="Mix Up" HorizontalAlignment="Left" Margin="564,400,0,0" VerticalAlignment="Top" Width="147" Click="Button_Click_2" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Height="66" FontSize="22" FontWeight="Bold"/>
+            <TextBlock Name="tblock1" Text="tb1" TextAlignment="Right" HorizontalAlignment="Left" Margin="324,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" />
+            <TextBlock Name="tblock2" Text="tb2" HorizontalAlignment="Left" TextAlignment="Right" Margin="381,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+            <TextBlock Name="tblock3" Text="tb3" HorizontalAlignment="Left" Margin="439,369,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+            <TextBlock  Name="tblock4" Text="tb4" HorizontalAlignment="Left" Margin="496,369,0,0" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Top"  Width="30"/>
+            <TextBlock Name="tblock5" Text="tb5" HorizontalAlignment="Left" Margin="554,369,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30"/>
+            <TextBlock Name="tblock6" Text="tb6" HorizontalAlignment="Left" Margin="612,369,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30" RenderTransformOrigin="2.733,0.426"/>
             <Grid Margin="296,8,10,174">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="134*"/>
@@ -128,7 +143,7 @@
                 
                 <!--</StackPanel>-->
             </Grid>
-            <ListBox x:Name="listboxScore" BorderThickness="3" HorizontalAlignment="Center" Height="285" Margin="12,46,605,139" VerticalAlignment="Center" Width="109" SelectedIndex="-1" SelectionMode="Multiple"/>
+            <ListBox x:Name="listboxScore" BorderThickness="3" HorizontalAlignment="Center" Height="291" Margin="12,46,605,133" VerticalAlignment="Center" Width="109" SelectedIndex="-1" SelectionMode="Multiple"/>
             <TextBlock Name="finalSocre"  Text="score" HorizontalAlignment="Left" Margin="171,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="162,14,0,0" TextWrapping="Wrap" Text="Your Score" VerticalAlignment="Top" Width="106"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" TextDecorations="Underline" FontWeight="Bold" FontFamily="Century">
@@ -138,11 +153,15 @@
             </TextBlock>
             <TextBlock HorizontalAlignment="Left" Margin="126,97,0,0" TextWrapping="Wrap" Text="Remaining Time" VerticalAlignment="Top"/>
             <TextBlock Text="time" Name="timeCount" HorizontalAlignment="Left" Margin="171,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-            <Button Content="New Game" HorizontalAlignment="Left" Margin="0,403,0,-1" VerticalAlignment="Top" Width="177" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Click="Button_Click_3" FontSize="22"/>
-            <Button x:Name="bt13" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="630,352,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt13_Click"/>
-            <TextBlock x:Name="tblock7" Text="tb7" HorizontalAlignment="Left" Margin="668,391,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30" RenderTransformOrigin="2.733,0.426"/>
-            <Button x:Name="bt14"  Content="" HorizontalAlignment="Left" Margin="626,281,0,0" VerticalAlignment="Top" Height="74" Width="95" FontSize="22"/>
-            </Grid>
+            <Button Content="New Game" HorizontalAlignment="Left" Margin="4,406,0,-4" VerticalAlignment="Top" Width="160" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Click="Button_Click_3" FontSize="22"/>
+            <Button x:Name="bt13" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="630,330,0,0" VerticalAlignment="Top" Width="84" Height="80" Click="bt13_Click"/>
+            <TextBlock x:Name="tblock7" Text="tb7" HorizontalAlignment="Left" Margin="668,369,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Right" Width="30" RenderTransformOrigin="2.733,0.426"/>
+            <Button x:Name="bt14"  Content="" HorizontalAlignment="Left" Margin="620,265,0,0" VerticalAlignment="Top" Height="74" Width="95" FontSize="22" Click="bt14RollBac"/>
+            <Button Content="Roll Back" HorizontalAlignment="Left" Margin="284,402,0,0" VerticalAlignment="Top" Width="147" Click="rollBack" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Height="64" FontSize="22"/>
+          
+            <Button Content="Exchange" HorizontalAlignment="Left" Margin="426,400,0,0" VerticalAlignment="Top" Width="147" Click="exchange" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Height="66" FontSize="22"/>
+            
+        </Grid>
     </Grid>
  
 </phone:PhoneApplicationPage>
