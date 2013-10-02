@@ -41,7 +41,10 @@
                    </Popup>
             <Popup Name="missing" IsOpen="False" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Margin="0,0,600,400">
                 <StackPanel Orientation="Horizontal" Background="Brown" Height="269">
-                    <ListBox Name="listmiss" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="253" Height="259" SelectionChanged="listmiss_SelectionChanged" />
+                    <ListBox Name="list1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="25" Height="259" SelectionChanged="listmiss_SelectionChanged" />
+                    <ListBox Name="list2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="25" Height="259" SelectionChanged="list2_SelectionChanged"/>
+                    <ListBox Name="list3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="25" Height="259" SelectionChanged="list3_SelectionChanged"/>
+
                 </StackPanel>
             </Popup>
             <Button Content="Pass" VerticalContentAlignment="Center"  HorizontalAlignment="Left"  Margin="171,361,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.338,0.358" Width="136" Click="sumbit_click" Height="69" FontFamily="Aharoni" FontWeight="Bold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="22">
@@ -161,6 +164,7 @@
           
             <Button Content="Exchange" HorizontalAlignment="Left" Margin="426,400,0,0" VerticalAlignment="Top" Width="147" Click="exchange" Background="#FF744949" Foreground="#FFC18F8F" RenderTransformOrigin="0.471,1.063" Height="66" FontSize="22"/>
             
+
         </Grid>
     </Grid>
  

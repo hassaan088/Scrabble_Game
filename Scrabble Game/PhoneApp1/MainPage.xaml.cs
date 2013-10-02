@@ -66,7 +66,7 @@ namespace PhoneApp1
         bool doubleWordCheck = false;
         StreamReader reader;
         List<string> btnName = new List<string>();
-        
+        string[] strMatching = new string[7];
         // Constructor
         public MainPage()
         {
@@ -456,31 +456,31 @@ namespace PhoneApp1
                 tblock7.Text = "10";
             }
             //empty
-            if (bt4.Content.Equals(""))
+            if (bt4.Content.Equals("*"))
             {
                 tblock1.Text = "";
             }
-            if (bt5.Content.Equals(""))
+            if (bt5.Content.Equals("*"))
             {
                 tblock2.Text = "";
             }
-            if (bt6.Content.Equals(""))
+            if (bt6.Content.Equals("*"))
             {
                 tblock3.Text = "";
             }
-            if (bt10.Content.Equals(""))
+            if (bt10.Content.Equals("*"))
             {
                 tblock4.Text = "";
             }
-            if (bt11.Content.Equals(""))
+            if (bt11.Content.Equals("*"))
             {
                 tblock5.Text = "";
             }
-            if (bt12.Content.Equals(""))
+            if (bt12.Content.Equals("*"))
             {
                 tblock6.Text = "";
             }
-            if (bt13.Content.Equals(""))
+            if (bt13.Content.Equals("*"))
             {
                 tblock7.Text = "";
             }
@@ -488,11 +488,28 @@ namespace PhoneApp1
       
         private void sumbit_click(object sender, RoutedEventArgs e)
         {
-           
-            String st = tb1.Text;
+            string temp="";
+            String[] st = new string[2];
+            tb1.Text = "";
+            for (int i = 1; i < 15; i++)
+            {
+                var button = FindName("bt" + i) as Button;
+                if (!button.Content.Equals("") && (button.Name.Equals("bt1") || button.Name.Equals("bt2") || button.Name.Equals("bt3") || button.Name.Equals("bt7") || button.Name.Equals("bt8") || button.Name.Equals("bt9") || button.Name.Equals("bt14")))
+                {
+                    temp = button.Content.ToString();
+                    st = temp.Split(' ');
+                    tb1.Text += st[0];
+                    t_alpha.Add(st[0]);
+                    //MessageBox.Show(st[1]);
+                    multipleScore.Add(Convert.ToInt32(st[1]));
+                    //MessageBox.Show(tb1.Text);
+                }
+            }
+            //String st = tb1.Text;
+            //MessageBox.Show(tb1.Text);
             if (tb1.Text.Length > 1)
             {
-                if (str.Contains(st.ToLower()))
+                if (str.Contains(tb1.Text.ToLower()))
                 {
                     for (int j = 0; j < t_alpha.Count; j++)
                     {
@@ -750,18 +767,19 @@ namespace PhoneApp1
             vwl[2] = "I";
             vwl[3] = "O";
             vwl[4] = "U";
-            vwl[1] = "";
+            vwl[1] = "*";
         }
 
         private void bt4_Click(object sender, RoutedEventArgs e)
         {
             bt4C = true;
-            if (!bt4.Content.Equals(""))
+            if (!bt4.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt4.Content.Equals(""))
                 {
                     bt1.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
+                    strMatching[0] = bt4.Content.ToString();
                     bt1.Content += " ";
                     bt1.Content += tblock1.Text;
                     bt4backword = bt1.Content.ToString() + "/bt4/tblock1/bt1";
@@ -778,7 +796,7 @@ namespace PhoneApp1
                 {
                     bt3.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
-                    bt4.Content += " ";
+                    bt3.Content += " ";
                     bt3.Content += tblock1.Text;
                     bt6backword = bt3.Content.ToString() + "/bt4/tblock1/bt3";
                 }
@@ -794,6 +812,7 @@ namespace PhoneApp1
                 {
                     bt8.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
+                    strMatching[0] = bt4.Content.ToString();
                     bt8.Content += " ";
                     bt8.Content += tblock1.Text;
                     bt11backword = bt8.Content.ToString() + "/bt4/tblock1/bt8";
@@ -802,6 +821,7 @@ namespace PhoneApp1
                 {
                     bt9.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
+                    strMatching[0] = bt4.Content.ToString();
                     bt9.Content += " ";
                     bt9.Content += tblock1.Text;
                     bt12backword = bt9.Content.ToString() + "/bt4/tblock1/bt9";
@@ -810,13 +830,14 @@ namespace PhoneApp1
                 {
                     bt14.Content = bt4.Content;
                     tb1.Text += bt4.Content.ToString();
+                    strMatching[0] = bt4.Content.ToString();
                     bt14.Content += " ";
                     bt14.Content += tblock1.Text;
                     bt13backword = bt14.Content.ToString() + "/bt4/tblock1/bt14";
                 }
 
-                t_alpha.Add(bt4.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock1.Text));
+               // t_alpha.Add(bt4.Content.ToString());
+                //multipleScore.Add(Convert.ToInt32(tblock1.Text));
                 bt4value = bt4.Content.ToString();
                 bt4score = tblock1.Text;
                 bt4.Content = "";
@@ -832,12 +853,13 @@ namespace PhoneApp1
         private void bt5_Click(object sender, RoutedEventArgs e)
         {
             bt5C = true;
-            if (!bt5.Content.Equals(""))
+            if (!bt5.Content.Equals("*"))
             {
                if (bt1.Content.Equals("") && !bt5.Content.Equals(""))
                 {
                     bt1.Content = bt5.Content;
                     tb1.Text += bt5.Content.ToString();
+                    strMatching[1] = bt4.Content.ToString();
                     bt1.Content += " ";
                     bt1.Content += tblock2.Text;
                     bt4backword = bt1.Content.ToString() + "/bt5/tblock2/bt1";
@@ -891,8 +913,8 @@ namespace PhoneApp1
                     bt14.Content += tblock2.Text;
                     bt13backword = bt14.Content.ToString() + "/bt5/tblock2/bt14";
                 }
-                multipleScore.Add(Convert.ToInt32(tblock2.Text));
-                t_alpha.Add(bt5.Content.ToString());
+               // multipleScore.Add(Convert.ToInt32(tblock2.Text));
+                //t_alpha.Add(bt5.Content.ToString());
                 bt5value = bt5.Content.ToString();
                 bt5score = tblock2.Text;
                 bt5.Content = "";
@@ -907,7 +929,7 @@ namespace PhoneApp1
         private void bt6_Click(object sender, RoutedEventArgs e)
         {
             bt6C = true;
-            if (!bt6.Content.Equals(""))
+            if (!bt6.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt6.Content.Equals(""))
                 {
@@ -965,8 +987,8 @@ namespace PhoneApp1
                     bt14.Content += tblock3.Text;
                     bt13backword = bt14.Content.ToString() + "/bt6/tblock3/bt14";
                 }
-                t_alpha.Add(bt6.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock3.Text));
+               // t_alpha.Add(bt6.Content.ToString());
+               // multipleScore.Add(Convert.ToInt32(tblock3.Text));
                 bt6value = bt6.Content.ToString();
                 bt6score = tblock3.Text;
                 bt6.Content = "";
@@ -982,7 +1004,7 @@ namespace PhoneApp1
         private void bt10_Click(object sender, RoutedEventArgs e)
         {
             bt10C = true;
-            if (!bt10.Content.Equals(""))
+            if (!bt10.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt10.Content.Equals(""))
                 {
@@ -1040,8 +1062,8 @@ namespace PhoneApp1
                     bt14.Content += tblock4.Text;
                     bt13backword = bt14.Content.ToString() + "/bt10/tblock4/bt14";
                 }
-                t_alpha.Add(bt10.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock4.Text));
+               // t_alpha.Add(bt10.Content.ToString());
+               // multipleScore.Add(Convert.ToInt32(tblock4.Text));
                 bt10value = bt10.Content.ToString();
                 bt10score = tblock4.Text;
                 bt10.Content = "";
@@ -1056,7 +1078,7 @@ namespace PhoneApp1
         private void bt11_Click(object sender, RoutedEventArgs e)
         {
             bt11C = true;
-            if (!bt11.Content.Equals(""))
+            if (!bt11.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt11.Content.Equals(""))
                 {
@@ -1114,8 +1136,8 @@ namespace PhoneApp1
                     bt14.Content += tblock5.Text;
                     bt13backword = bt14.Content.ToString() + "/bt11/tblock5/bt14";
                 }
-                t_alpha.Add(bt11.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock5.Text));
+               // t_alpha.Add(bt11.Content.ToString());
+                //multipleScore.Add(Convert.ToInt32(tblock5.Text));
                 bt11value = bt11.Content.ToString();
                 bt11score = tblock5.Text;
                 bt11.Content = "";
@@ -1130,7 +1152,7 @@ namespace PhoneApp1
         private void bt12_Click(object sender, RoutedEventArgs e)
         {
             bt12C = true;
-            if (!bt12.Content.Equals(""))
+            if (!bt12.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt12.Content.Equals(""))
                 {
@@ -1188,8 +1210,8 @@ namespace PhoneApp1
                     bt14.Content += tblock6.Text;
                     bt13backword = bt14.Content.ToString() + "/bt12/tblock6/bt14";
                 }
-                t_alpha.Add(bt12.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock6.Text));
+                //t_alpha.Add(bt12.Content.ToString());
+                //multipleScore.Add(Convert.ToInt32(tblock6.Text));
                 bt12value = bt12.Content.ToString();
                 bt12score = tblock6.Text;
                 bt12.Content = "";
@@ -1243,9 +1265,9 @@ namespace PhoneApp1
 
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
-
             rollback(bt4backword);
             bt4backword = "";
+            
         }
         public void rollback(string s)
         {
@@ -1279,7 +1301,7 @@ namespace PhoneApp1
         private void bt13_Click(object sender, RoutedEventArgs e)
         {
             bt13C = true;
-            if (!bt13.Content.Equals(""))
+            if (!bt13.Content.Equals("*"))
             {
                 if (bt1.Content.Equals("") && !bt13.Content.Equals(""))
                 {
@@ -1338,8 +1360,8 @@ namespace PhoneApp1
                     bt14.Content += tblock7.Text;
                     bt13backword = bt14.Content.ToString() + "/bt13/tblock7/bt14";
                 }
-                t_alpha.Add(bt13.Content.ToString());
-                multipleScore.Add(Convert.ToInt32(tblock7.Text));
+                //t_alpha.Add(bt13.Content.ToString());
+                //multipleScore.Add(Convert.ToInt32(tblock7.Text));
                 bt13value = bt13.Content.ToString();
                 bt13score = tblock7.Text;
                 bt13.Content = "";
@@ -1509,79 +1531,96 @@ namespace PhoneApp1
 
         public void miss()
         {
-            abcd();
-            for(int i=0;i<21;i++)
+            string[] a = new string[] {"A","B","C","D","E","F","g","H","I" };
+            string[] b = new string[] { "J", "K", "L", "M", "N", "O", "P", "Q", "R" };
+            string[] c = new string[] { "S", "T", "V", "W", "X", "Y", "Z"};
+            for(int i=0;i<9;i++)
             {
-                listmiss.Items.Add(abc[i]);
+                list1.Items.Add(a[i]);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                list2.Items.Add(b[i]);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                list3.Items.Add(c[i]);
             }
             // string text = listmiss.GetItemText(listmiss.SelectedItem);
         }
 
-        private void listmiss_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void selectitem(ListBox listname)
         {
-            if (bt4C == true)
+            if (bt4.Content.Equals("*") && bt4C==true)
             {
                 bt4C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt4.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt5C == true)
+            if (bt5.Content.Equals("*") && bt5C == true)
             {
                 bt5C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt5.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt6C == true)
+            if (bt6.Content.Equals("*") && bt6C == true)
             {
                 bt6C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt6.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt10C == true)
+            if (bt10.Content.Equals("*") && bt10C == true)
             {
                 bt10C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt10.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt11C == true)
+            if (bt11.Content.Equals("*"))
             {
                 bt11C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt11.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt12C == true)
+            if (bt12.Content.Equals("*") && bt12C == true)
             {
                 bt12C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt12.Content = s;
                 score();
                 missing.IsOpen = false;
             }
-            if (bt13C == true)
+            if (bt13.Content.Equals("*") && bt13C == true)
             {
                 bt13C = false;
-                string s = listmiss.SelectedItem.ToString();
-                MessageBox.Show(s);
+                string s = listname.SelectedItem.ToString();
                 bt13.Content = s;
                 score();
                 missing.IsOpen = false;
             }
+        }
+        private void listmiss_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectitem(list1);
+        }
+
+        private void list2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectitem(list2);
+        }
+
+        private void list3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectitem(list3);
         }
 
        
